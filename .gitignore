@@ -8,6 +8,8 @@ src/pdsend
 *.exe
 pdgtk
 
+/asio/ASIOSDK/
+
 # autotools
 autom4te.cache
 Makefile
