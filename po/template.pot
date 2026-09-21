@@ -5,9 +5,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Pure Data 0.56.0\n"
+"Project-Id-Version: Pure Data 0.57.0\n"
 "Report-Msgid-Bugs-To: pd-dev@iem.at\n"
-"POT-Creation-Date: 2025-07-30 15:04+0200\n"
+"POT-Creation-Date: 2026-08-28 01:37+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -610,6 +610,9 @@ msgstr ""
 msgid "deken preferences"
 msgstr ""
 
+msgid "keyboard shortcuts"
+msgstr ""
+
 msgid "misc preferences"
 msgstr ""
 
@@ -693,6 +696,10 @@ msgstr ""
 
 #, tcl-format
 msgid "using font: %1$s %2$s"
+msgstr ""
+
+#, tcl-format
+msgid "Ignoring non-existant plugin '%s'"
 msgstr ""
 
 #, tcl-format
@@ -834,6 +841,9 @@ msgstr ""
 msgid "Unable to rename downloaded file to '%s'"
 msgstr ""
 
+msgid "~"
+msgstr ""
+
 msgid "Search URLs:"
 msgstr ""
 
@@ -868,6 +878,15 @@ msgid "Keep package files after installation"
 msgstr ""
 
 msgid "Add newly installed libraries to Pd's search path"
+msgstr ""
+
+msgid "- Always add to search path"
+msgstr ""
+
+msgid "- Never add to search path"
+msgstr ""
+
+msgid "- Prompt before adding"
 msgstr ""
 
 msgid "Platform settings:"
@@ -1003,10 +1022,16 @@ msgstr ""
 msgid "%s%% of download completed"
 msgstr ""
 
-msgid "Enter an exact library or object name."
+msgid "Enter a library or object name."
 msgstr ""
 
 msgid "e.g. 'freeverb~'"
+msgstr ""
+
+msgid "By default this will find anything that contains the search word(s)."
+msgstr ""
+
+msgid "If you enable 'exact search' mode, only exact matches are considered."
 msgstr ""
 
 msgid "Use the '*' wildcard to match any number of characters."
@@ -1051,6 +1076,9 @@ msgstr ""
 msgid "translations"
 msgstr ""
 
+msgid "exact search"
+msgstr ""
+
 msgid "Only install externals uploaded by people you trust."
 msgstr ""
 
@@ -1076,6 +1104,9 @@ msgid "Search Results"
 msgstr ""
 
 msgid "Log"
+msgstr ""
+
+msgid "Searching for all packages..."
 msgstr ""
 
 #, tcl-format
@@ -1166,6 +1197,10 @@ msgstr ""
 
 #, tcl-format
 msgid "Could not find a menu for adding '%s'"
+msgstr ""
+
+#, tcl-format
+msgid "Downgrading %s to %s"
 msgstr ""
 
 #, tcl-format
@@ -1890,6 +1925,9 @@ msgstr ""
 msgid "Zoom Out"
 msgstr ""
 
+msgid "Reset Zoom"
+msgstr ""
+
 msgid "Clear Console"
 msgstr ""
 
@@ -1914,6 +1952,9 @@ msgstr ""
 msgid "Comment"
 msgstr ""
 
+msgid "Scalar"
+msgstr ""
+
 msgid "Graph"
 msgstr ""
 
@@ -1933,9 +1974,6 @@ msgid "DSP Off"
 msgstr ""
 
 msgid "Test Audio and MIDI..."
-msgstr ""
-
-msgid "Load Meter"
 msgstr ""
 
 msgid "Audio Settings..."
@@ -1965,6 +2003,9 @@ msgstr ""
 msgid "Parent Window"
 msgstr ""
 
+msgid "Load Meter"
+msgstr ""
+
 msgid "Message..."
 msgstr ""
 
@@ -1986,7 +2027,7 @@ msgstr ""
 msgid "Report a bug"
 msgstr ""
 
-msgid "Clear Menu"
+msgid "Clear Recent Files"
 msgstr ""
 
 msgid ""
@@ -2023,6 +2064,9 @@ msgid "Do you want to save the changes you made in '%s'?"
 msgstr ""
 
 msgid "Properties"
+msgstr ""
+
+msgid "edit mode"
 msgstr ""
 
 #, tcl-format

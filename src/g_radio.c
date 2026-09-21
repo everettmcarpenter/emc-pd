@@ -21,15 +21,26 @@ static t_class *radio_class;
 
 /* widget helper functions */
 
+PD_INLINE int clamp_radio(void*x, int num) {
+    if (num<1) {
+        pd_error(x, "radio: invalid number of cells: %d", num);
+        return 1;
+    }
+    if (num>IEM_RADIO_MAX) {
+        pd_error(x, "radio: maximum number of cells exceeded: %d>%d", num, IEM_RADIO_MAX);
+        return IEM_RADIO_MAX;
+    }
+    return num;
+}
+
 /* cannot use iemgui's default draw_iolets, because
  * - vradio would use show the outlet at the 0th button rather than the last...
  */
 static void radio_draw_io(t_radio* x, t_glist* glist, int old_snd_rcv_flags)
 {
-    const int zoom = IEMGUI_ZOOM(x);
     int xpos = text_xpix(&x->x_gui.x_obj, glist);
     int ypos = text_ypix(&x->x_gui.x_obj, glist);
-    int iow = IOWIDTH * zoom, ioh = IEM_GUI_IOHEIGHT * zoom;
+    int iow = IOWIDTH, ioh = IEM_GUI_IOHEIGHT;
     t_canvas *canvas = glist_getcanvas(glist);
     char tag_object[128], tag_but[128], tag[128];
     char *tags[] = {tag_object, tag};
@@ -40,12 +51,12 @@ static void radio_draw_io(t_radio* x, t_glist* glist, int old_snd_rcv_flags)
     sprintf(tag_but, "%p_BUT", x);
 
     sprintf(tag, "%p_OUT%d", x, 0);
-    pdgui_vmess(0, "crs", canvas, "delete", tag);
+    pdgui_vmess("pdtk_canvas_delete", "cs", canvas, tag);
     if(!x->x_gui.x_fsf.x_snd_able)
     {
         int height = x->x_gui.x_h * ((x->x_orientation == horizontal)? 1: x->x_number);
         pdgui_vmess(0, "crr iiii rk rk rS", canvas, "create", "rectangle",
-            xpos, ypos + height + zoom - ioh,
+            xpos, ypos + height + 1 - ioh,
             xpos + iow, ypos + height,
             "-fill", THISGUI->i_foregroundcolor,
             "-outline", THISGUI->i_foregroundcolor,
@@ -56,12 +67,12 @@ static void radio_draw_io(t_radio* x, t_glist* glist, int old_snd_rcv_flags)
     }
 
     sprintf(tag, "%p_IN%d", x, 0);
-    pdgui_vmess(0, "crs", canvas, "delete", tag);
+    pdgui_vmess("pdtk_canvas_delete", "cs", canvas, tag);
     if(!x->x_gui.x_fsf.x_rcv_able)
     {
         pdgui_vmess(0, "crr iiii rk rk rS", canvas, "create", "rectangle",
             xpos, ypos,
-            xpos + iow, ypos - zoom + ioh,
+            xpos + iow, ypos - 1 + ioh,
             "-fill", THISGUI->i_foregroundcolor,
             "-outline", THISGUI->i_foregroundcolor,
             "-tags", 2, tags);
@@ -74,10 +85,9 @@ static void radio_draw_io(t_radio* x, t_glist* glist, int old_snd_rcv_flags)
 static void radio_draw_config(t_radio* x, t_glist* glist)
 {
     int i;
-    const int zoom = IEMGUI_ZOOM(x);
     t_iemgui *iemgui = &x->x_gui;
     t_canvas *canvas = glist_getcanvas(glist);
-    int iow = IOWIDTH * zoom, ioh = IEM_GUI_IOHEIGHT * zoom;
+    int iow = IOWIDTH, ioh = IEM_GUI_IOHEIGHT;
     int xx11b = text_xpix(&x->x_gui.x_obj, glist);
     int yy11b = text_ypix(&x->x_gui.x_obj, glist);
     int d, dx = 0, dy = 0, d4;
@@ -88,7 +98,7 @@ static void radio_draw_config(t_radio* x, t_glist* glist)
     char tag[128];
     t_atom fontatoms[3];
     SETSYMBOL(fontatoms+0, gensym(iemgui->x_font));
-    SETFLOAT (fontatoms+1, -iemgui->x_fontsize*zoom);
+    SETFLOAT (fontatoms+1, -iemgui->x_fontsize);
     SETSYMBOL(fontatoms+2, gensym(sys_fontweight));
 
     if(x->x_orientation == horizontal)
@@ -112,7 +122,7 @@ static void radio_draw_config(t_radio* x, t_glist* glist)
         pdgui_vmess(0, "crs iiii", canvas, "coords", tag,
             xx11, yy11, xx12, yy12);
         pdgui_vmess(0, "crs ri rk rk", canvas, "itemconfigure", tag,
-            "-width", zoom, "-fill", x->x_gui.x_bcol,
+            "-width", 1, "-fill", x->x_gui.x_bcol,
             "-outline", THISGUI->i_foregroundcolor);
 
         sprintf(tag, "%p_BUT%d", x, i);
@@ -128,7 +138,7 @@ static void radio_draw_config(t_radio* x, t_glist* glist)
 
     sprintf(tag, "%p_LABEL", x);
     pdgui_vmess(0, "crs ii", canvas, "coords", tag,
-        xx11b + x->x_gui.x_ldx * zoom, yy11b + x->x_gui.x_ldy * zoom);
+        xx11b + x->x_gui.x_ldx, yy11b + x->x_gui.x_ldy);
     pdgui_vmess(0, "crs rA rk", canvas, "itemconfigure", tag,
         "-font", 3, fontatoms,
         "-fill", x->x_gui.x_lcol);
@@ -248,8 +258,8 @@ static void radio_save(t_gobj *z, t_binbuf *b)
     binbuf_addv(b, "ssiisiiiisssiiiisssf", gensym("#X"), gensym("obj"),
                 (int)x->x_gui.x_obj.te_xpix,
                 (int)x->x_gui.x_obj.te_ypix,
-        gensym(objname),
-                x->x_gui.x_w/IEMGUI_ZOOM(x),
+                gensym(objname),
+                x->x_gui.x_w,
                 x->x_change, iem_symargstoint(&x->x_gui.x_isa), x->x_number,
                 srl[0], srl[1], srl[2],
                 x->x_gui.x_ldx, x->x_gui.x_ldy,
@@ -275,7 +285,7 @@ static void radio_properties(t_gobj *z, t_glist *owner)
         hchange = x->x_change;
 
     iemgui_new_dialog(x, &x->x_gui, objname,
-        x->x_gui.x_w/IEMGUI_ZOOM(x), IEM_GUI_MINSIZE,
+        x->x_gui.x_w, IEM_GUI_MINSIZE,
         0, 0,
         0, 0,
         0,
@@ -306,8 +316,9 @@ static void radio_dialog(t_radio *x, t_symbol *s, int argc, t_atom *argv)
     if(chg != 0) chg = 1;
     x->x_change = chg;
     sr_flags = iemgui_dialog(&x->x_gui, srl, argc, argv);
-    x->x_gui.x_w = iemgui_clip_size(a) * IEMGUI_ZOOM(x);
+    x->x_gui.x_w = iemgui_clip_size(a);
     x->x_gui.x_h = x->x_gui.x_w;
+    num = clamp_radio(x, num);
     if (num != x->x_number && glist_isvisible(x->x_gui.x_glist))
     {
         /* we need to recreate the buttons */
@@ -516,12 +527,7 @@ static void radio_loadbang(t_radio *x, t_floatarg action)
 
 static void radio_number(t_radio *x, t_floatarg num)
 {
-    int n = (int)num;
-
-    if(n < 1)
-        n = 1;
-    if(n > IEM_RADIO_MAX)
-        n = IEM_RADIO_MAX;
+    int n = clamp_radio(x, (int)num);
     if(n != x->x_number)
     {
         int vis = glist_isvisible(x->x_gui.x_glist);
@@ -547,7 +553,7 @@ static void radio_orientation(t_radio *x, t_floatarg forient)
 
 static void radio_size(t_radio *x, t_symbol *s, int ac, t_atom *av)
 {
-    x->x_gui.x_w = iemgui_clip_size((int)atom_getfloatarg(0, ac, av)) * IEMGUI_ZOOM(x);
+    x->x_gui.x_w = iemgui_clip_size((int)atom_getfloatarg(0, ac, av));
     x->x_gui.x_h = x->x_gui.x_w;
     iemgui_size((void *)x, &x->x_gui);
 }
@@ -619,7 +625,7 @@ static void *radio_donew(t_symbol *s, int argc, t_atom *argv, int old)
         a = (int)atom_getfloatarg(0, argc, argv);
         chg = (int)atom_getfloatarg(1, argc, argv);
         iem_inttosymargs(&x->x_gui.x_isa, atom_getfloatarg(2, argc, argv));
-        num = (int)atom_getfloatarg(3, argc, argv);
+        num = clamp_radio(x, (int)atom_getfloatarg(3, argc, argv));
         iemgui_new_getnames(&x->x_gui, 4, argv);
         ldx = (int)atom_getfloatarg(7, argc, argv);
         ldy = (int)atom_getfloatarg(8, argc, argv);
@@ -635,10 +641,6 @@ static void *radio_donew(t_symbol *s, int argc, t_atom *argv, int old)
     else if(x->x_gui.x_fsf.x_font_style == 2) strcpy(x->x_gui.x_font, "times");
     else { x->x_gui.x_fsf.x_font_style = 0;
         strcpy(x->x_gui.x_font, sys_font); }
-    if(num < 1)
-        num = 1;
-    if(num > IEM_RADIO_MAX)
-        num = IEM_RADIO_MAX;
     x->x_number = num;
     x->x_fval = fval;
     on = fval;
@@ -660,7 +662,6 @@ static void *radio_donew(t_symbol *s, int argc, t_atom *argv, int old)
     x->x_gui.x_w = iemgui_clip_size(a);
     x->x_gui.x_h = x->x_gui.x_w;
     iemgui_verify_snd_ne_rcv(&x->x_gui);
-    iemgui_newzoom(&x->x_gui);
     outlet_new(&x->x_gui.x_obj, &s_list);
     return (x);
 }
@@ -719,8 +720,6 @@ void g_radio_setup(void)
         gensym("number"), A_FLOAT, 0);
     class_addmethod(radio_class, (t_method)radio_orientation,
         gensym("orientation"), A_FLOAT, 0);
-    class_addmethod(radio_class, (t_method)iemgui_zoom,
-        gensym("zoom"), A_CANT, 0);
     radio_widgetbehavior.w_getrectfn = radio_getrect;
     radio_widgetbehavior.w_displacefn = iemgui_displace;
     radio_widgetbehavior.w_selectfn = iemgui_select;

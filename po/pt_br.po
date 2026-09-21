@@ -7,17 +7,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Pure Data 0.53.0\n"
 "Report-Msgid-Bugs-To: pd-dev@iem.at\n"
-"POT-Creation-Date: 2025-07-30 15:04+0200\n"
-"PO-Revision-Date: 2025-08-09 18:01+0000\n"
+"POT-Creation-Date: 2026-08-28 01:37+0200\n"
+"PO-Revision-Date: 2026-05-13 20:11+0000\n"
 "Last-Translator: porres <porres@gmail.com>\n"
-"Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
-"pure-data/pure-data/pt_BR/>\n"
+"Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/pure-"
+"data/pure-data/pt_BR/>\n"
 "Language: pt_br\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.13-dev\n"
+"X-Generator: Weblate 2026.5.dev0\n"
 
 msgid "linear"
 msgstr "linear"
@@ -616,6 +616,9 @@ msgstr "MIDI"
 msgid "deken preferences"
 msgstr "preferências do deken"
 
+msgid "keyboard shortcuts"
+msgstr ""
+
 msgid "misc preferences"
 msgstr "diversas"
 
@@ -700,6 +703,10 @@ msgstr "AVISO: peso de fonte '%1$s' não encontrado, usando padrão (%2$s)"
 #, tcl-format
 msgid "using font: %1$s %2$s"
 msgstr "usando fonte: %1$s %2$s"
+
+#, tcl-format
+msgid "Ignoring non-existant plugin '%s'"
+msgstr ""
 
 #, tcl-format
 msgid "'%1$s' already loaded, ignoring: '%2$s'"
@@ -840,6 +847,9 @@ msgstr "Incapaz de remover arquivo 'stray' '%s'"
 msgid "Unable to rename downloaded file to '%s'"
 msgstr "Incapaz de renomear arquivo baixado de '%s'"
 
+msgid "~"
+msgstr ""
+
 msgid "Search URLs:"
 msgstr "Procurar URLs:"
 
@@ -875,6 +885,17 @@ msgstr "Manter arquivos do pacote depois da instalação"
 
 msgid "Add newly installed libraries to Pd's search path"
 msgstr "Adicionar bibliotecas recém-instaladas ao caminho de busca do Pd"
+
+#, fuzzy
+msgid "- Always add to search path"
+msgstr "%s adicionado aos caminhos de busca"
+
+#, fuzzy
+msgid "- Never add to search path"
+msgstr "Incapaz de adicionar %s aos caminhos de busca"
+
+msgid "- Prompt before adding"
+msgstr ""
 
 msgid "Platform settings:"
 msgstr "Configurações da plataforma:"
@@ -1015,11 +1036,21 @@ msgstr "Instalar"
 msgid "%s%% of download completed"
 msgstr "download de %s%% concluído"
 
-msgid "Enter an exact library or object name."
-msgstr "Digite o nome exato de um objeto ou biblioteca."
+msgid "Enter a library or object name."
+msgstr "Digite o nome de uma biblioteca ou objeto."
 
 msgid "e.g. 'freeverb~'"
 msgstr "p. ex., 'freeverb~'"
+
+msgid "By default this will find anything that contains the search word(s)."
+msgstr ""
+"Por padrão, isso encontrará qualquer coisa que contenha a(s) palavrava(s) de "
+"busca."
+
+msgid "If you enable 'exact search' mode, only exact matches are considered."
+msgstr ""
+"Se você ativar o modo \"busca exata\", apenas correspondências exatas são "
+"consideradas."
 
 msgid "Use the '*' wildcard to match any number of characters."
 msgstr "Use o curinga '*' para combinar com qualquer número de caracteres."
@@ -1066,6 +1097,9 @@ msgstr "ambos"
 msgid "translations"
 msgstr "traduções"
 
+msgid "exact search"
+msgstr "busca exata"
+
 msgid "Only install externals uploaded by people you trust."
 msgstr "Apenas Instale externals enviados por quem você confia."
 
@@ -1092,6 +1126,9 @@ msgstr "Resultados de Busca"
 
 msgid "Log"
 msgstr "Log"
+
+msgid "Searching for all packages..."
+msgstr "Procurando por todos pacotes..."
 
 #, tcl-format
 msgid "Searching for \"%s\"..."
@@ -1182,6 +1219,10 @@ msgstr "[deken] platforma detectada: %s"
 #, tcl-format
 msgid "Could not find a menu for adding '%s'"
 msgstr "Não foi possível encontrar um menu para adicionar '%s'"
+
+#, fuzzy, tcl-format
+msgid "Downgrading %s to %s"
+msgstr "Baixando '%s'"
 
 #, tcl-format
 msgid "Searching on %s..."
@@ -1924,6 +1965,10 @@ msgstr "Ampliar Zoom"
 msgid "Zoom Out"
 msgstr "Reduzir Zoom"
 
+#, fuzzy
+msgid "Reset Zoom"
+msgstr "Resetar"
+
 msgid "Clear Console"
 msgstr "Limpar Console"
 
@@ -1948,6 +1993,10 @@ msgstr "Símbolo"
 msgid "Comment"
 msgstr "Comentário"
 
+#, fuzzy
+msgid "Scalar"
+msgstr "Escala"
+
 msgid "Graph"
 msgstr "Gráfico"
 
@@ -1968,9 +2017,6 @@ msgstr "DSP Desligado"
 
 msgid "Test Audio and MIDI..."
 msgstr "Testar Áudio e MIDI..."
-
-msgid "Load Meter"
-msgstr "Medidor de CPU"
 
 msgid "Audio Settings..."
 msgstr "Configurações de Áudio..."
@@ -1999,6 +2045,9 @@ msgstr "Fechar subjanelas"
 msgid "Parent Window"
 msgstr "Janela Mãe"
 
+msgid "Load Meter"
+msgstr "Medidor de CPU"
+
 msgid "Message..."
 msgstr "Mensagem..."
 
@@ -2020,8 +2069,9 @@ msgstr "Procurar por atualizações"
 msgid "Report a bug"
 msgstr "Reportar problemas (bugs)"
 
-msgid "Clear Menu"
-msgstr "Limpar Menu"
+#, fuzzy
+msgid "Clear Recent Files"
+msgstr "Arquivos de texto de Max"
 
 msgid ""
 "Delete all preferences?\n"
@@ -2060,6 +2110,9 @@ msgstr "Você deseja salvar as alterações feitas em '%s'?"
 
 msgid "Properties"
 msgstr "Propriedades"
+
+msgid "edit mode"
+msgstr "modo de edição"
 
 #, tcl-format
 msgid "Accept changes to '%s'?"
@@ -2138,6 +2191,9 @@ msgstr "Deletar"
 #, tcl-format
 msgid "ignoring '%s': doesn't look like a Pd file"
 msgstr "ignorando '%s': não parece ser um arquivo de Pd"
+
+#~ msgid "Clear Menu"
+#~ msgstr "Limpar Menu"
 
 #~ msgid "(Tcl) MISSING CLOSE-BRACKET ']': "
 #~ msgstr "(Tcl) MISSING CLOSE-BRACKET ']': "

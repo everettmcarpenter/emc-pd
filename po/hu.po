@@ -6,11 +6,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Pure Data 0.43\n"
 "Report-Msgid-Bugs-To: pd-dev@iem.at\n"
-"POT-Creation-Date: 2025-07-17 14:59+0200\n"
+"POT-Creation-Date: 2026-08-28 01:37+0200\n"
 "PO-Revision-Date: 2025-08-01 09:02+0000\n"
 "Last-Translator: umläute <dev@umlaeute.mur.at>\n"
-"Language-Team: Hungarian <https://hosted.weblate.org/projects/pure-data/"
-"pure-data/hu/>\n"
+"Language-Team: Hungarian <https://hosted.weblate.org/projects/pure-data/pure-"
+"data/hu/>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -651,6 +651,9 @@ msgstr "Beállítások"
 msgid "deken preferences"
 msgstr "Beállítások"
 
+msgid "keyboard shortcuts"
+msgstr ""
+
 #, fuzzy
 msgid "misc preferences"
 msgstr "Beállítások"
@@ -740,6 +743,10 @@ msgstr ""
 
 #, tcl-format
 msgid "using font: %1$s %2$s"
+msgstr ""
+
+#, tcl-format
+msgid "Ignoring non-existant plugin '%s'"
 msgstr ""
 
 #, tcl-format
@@ -881,6 +888,9 @@ msgstr ""
 msgid "Unable to rename downloaded file to '%s'"
 msgstr ""
 
+msgid "~"
+msgstr ""
+
 #, fuzzy
 msgid "Search URLs:"
 msgstr "Keresés itt:"
@@ -916,6 +926,15 @@ msgid "Keep package files after installation"
 msgstr ""
 
 msgid "Add newly installed libraries to Pd's search path"
+msgstr ""
+
+msgid "- Always add to search path"
+msgstr ""
+
+msgid "- Never add to search path"
+msgstr ""
+
+msgid "- Prompt before adding"
 msgstr ""
 
 msgid "Platform settings:"
@@ -1055,10 +1074,16 @@ msgstr ""
 msgid "%s%% of download completed"
 msgstr ""
 
-msgid "Enter an exact library or object name."
+msgid "Enter a library or object name."
 msgstr ""
 
 msgid "e.g. 'freeverb~'"
+msgstr ""
+
+msgid "By default this will find anything that contains the search word(s)."
+msgstr ""
+
+msgid "If you enable 'exact search' mode, only exact matches are considered."
 msgstr ""
 
 msgid "Use the '*' wildcard to match any number of characters."
@@ -1105,6 +1130,9 @@ msgstr ""
 msgid "translations"
 msgstr ""
 
+msgid "exact search"
+msgstr ""
+
 msgid "Only install externals uploaded by people you trust."
 msgstr ""
 
@@ -1132,6 +1160,10 @@ msgstr "Keresés itt:"
 
 msgid "Log"
 msgstr ""
+
+#, fuzzy
+msgid "Searching for all packages..."
+msgstr "Elveti '%s' változtatásait?"
 
 #, fuzzy, tcl-format
 msgid "Searching for \"%s\"..."
@@ -1221,6 +1253,10 @@ msgstr ""
 
 #, tcl-format
 msgid "Could not find a menu for adding '%s'"
+msgstr ""
+
+#, tcl-format
+msgid "Downgrading %s to %s"
 msgstr ""
 
 #, fuzzy, tcl-format
@@ -1949,6 +1985,9 @@ msgstr "Nagyító"
 msgid "Zoom Out"
 msgstr "Nagyító"
 
+msgid "Reset Zoom"
+msgstr ""
+
 msgid "Clear Console"
 msgstr "Konzolt ürít"
 
@@ -1973,6 +2012,10 @@ msgstr "Symbol"
 msgid "Comment"
 msgstr "Comment"
 
+#, fuzzy
+msgid "Scalar"
+msgstr "Méretarány"
+
 msgid "Graph"
 msgstr "Graph"
 
@@ -1993,9 +2036,6 @@ msgstr "DSP ki"
 
 msgid "Test Audio and MIDI..."
 msgstr "Hang és MIDI tesztelése..."
-
-msgid "Load Meter"
-msgstr "Terhelésmérő"
 
 msgid "Audio Settings..."
 msgstr "Hang beállítások..."
@@ -2027,6 +2067,9 @@ msgstr "Bezárja ezt az ablakot?"
 msgid "Parent Window"
 msgstr "Szülő ablak"
 
+msgid "Load Meter"
+msgstr "Terhelésmérő"
+
 #, fuzzy
 msgid "Message..."
 msgstr "Üzenet"
@@ -2049,8 +2092,9 @@ msgstr ""
 msgid "Report a bug"
 msgstr ""
 
-msgid "Clear Menu"
-msgstr "Menüt ürít"
+#, fuzzy
+msgid "Clear Recent Files"
+msgstr "Max szövegfájlok"
 
 msgid ""
 "Delete all preferences?\n"
@@ -2092,6 +2136,10 @@ msgstr "El akarja menteni '%s' változásait?"
 
 msgid "Properties"
 msgstr "Tulajdonságok"
+
+#, fuzzy
+msgid "edit mode"
+msgstr "Szerkesztő üzemmód"
 
 #, fuzzy, tcl-format
 msgid "Accept changes to '%s'?"
@@ -2172,6 +2220,9 @@ msgstr "Array-t töröl"
 #, tcl-format
 msgid "ignoring '%s': doesn't look like a Pd file"
 msgstr ""
+
+#~ msgid "Clear Menu"
+#~ msgstr "Menüt ürít"
 
 #, fuzzy
 #~ msgid "(no device)"
